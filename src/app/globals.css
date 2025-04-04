@@ -5,6 +5,8 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-tinnova-primary-blue: #00c8b3;
+  --color-tinnova-secondary-blue: rgba(0, 200, 179, 0.7)
 }
 
 *,
@@ -21,10 +23,6 @@ html {
   --color: #206;
   --color-light: #edf;
   --radius: 0.25rem;
-}
-
-body {
-  margin: 1.5rem;
 }
 
 body,
@@ -67,14 +65,8 @@ hr {
   margin: 2rem auto;
 }
 
-.flex {
-  display: flex;
-  gap: 1rem;
-}
-
-.menu {
-  display: flex;
-  gap: 1.5rem;
-  list-style: none;
-  padding: 0;
+.container {
+  max-width: 55rem;
+  padding: 0 1rem;
+  margin: 0 auto;
 }
