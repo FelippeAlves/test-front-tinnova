@@ -1,6 +1,7 @@
-import Menu from "@/components/menu";
+import Header from "@/components/Header";
 import "./globals.css";
 import type { Metadata } from "next";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Teste front-end Tinnova",
@@ -14,9 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>
-        <Menu />
+      <body className="flex flex-col min-h-screen">
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
