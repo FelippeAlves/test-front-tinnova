@@ -63,6 +63,7 @@ export default function ClientList() {
                             onClick={() => handleEditUser(user)}
                             className="text-gray-400 hover:text-gray-600 transition-colors"
                             aria-label="Editar"
+                            data-testid={`user-edit-${user.id}`}
                         >
                             <Pencil size={18} />
                         </button>
@@ -73,6 +74,7 @@ export default function ClientList() {
                             }}
                             className="text-red-300 hover:text-red-700 transition-colors"
                             aria-label="Deletar"
+                            data-testid={`user-delete-${user.id}`}
                         >
                             <Trash2 size={18} />
                         </button>
