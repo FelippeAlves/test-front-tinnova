@@ -23,6 +23,10 @@ Este projeto foi desenvolvido como parte de um teste técnico de frontend. Trata
 - ✅ Dados persistidos no `localStorage`
 - ✅ Testes unitários cobrindo as funcionalidades principais
 
+## Acesso ao projeto na vercel
+
+https://test-front-tinnova-4juw-q92hutacw-felippes-projects-81f10368.vercel.app/list
+
 ## Como rodar localmente
 
 1. Clone o repositório:
