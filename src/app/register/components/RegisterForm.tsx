@@ -95,6 +95,7 @@ export default function RegisterForm({ defaultValues, isEditing, onSuccess }: Re
             placeholder="Nome completo (sem abreviações)"
             {...register('name')}
             error={errors.name?.message}
+            data-testid='input-name'
           />
 
           <CustomInput
@@ -128,7 +129,7 @@ export default function RegisterForm({ defaultValues, isEditing, onSuccess }: Re
             error={errors.email?.message}
           />
 
-          <Button loading={loading} className="w-full mt-2">
+          <Button data-testid='btn-edit-create-user' loading={loading} className="w-full mt-2">
             {isEditing ? 'Salvar Alterações' : 'Cadastrar'}
           </Button>
         </form>
