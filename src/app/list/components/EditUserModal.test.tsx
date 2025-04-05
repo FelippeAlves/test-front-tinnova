@@ -5,6 +5,7 @@ import { RegisterFormData } from '../../register/components/RegisterForm';
 
 jest.mock('../../register/components/RegisterForm', () => ({
     __esModule: true,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     default: ({ onSuccess }: any) => (
         <button onClick={onSuccess}>Salvar</button>
     )
