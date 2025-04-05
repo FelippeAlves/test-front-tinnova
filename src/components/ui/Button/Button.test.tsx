@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/Button/Button';
 
 describe('<Button />', () => {
   it('renders with text', () => {

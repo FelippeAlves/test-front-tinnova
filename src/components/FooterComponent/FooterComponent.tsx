@@ -1,7 +1,7 @@
 import { Github } from 'lucide-react';
 import Link from 'next/link';
 
-export default function Footer() {
+export default function FooterComponent() {
     return (
         <footer className="w-full bg-gray-100 py-4 mt-auto">
             <div className="max-w-5xl mx-auto px-4 flex items-center justify-center text-sm text-gray-600">

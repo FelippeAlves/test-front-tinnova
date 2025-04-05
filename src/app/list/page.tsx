@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import ClientList from './components/ClientList';
-import Button from '@/components/ui/Button';
+import Button from '@/components/ui/Button/Button';
 
 export default async function ListPage() {
 

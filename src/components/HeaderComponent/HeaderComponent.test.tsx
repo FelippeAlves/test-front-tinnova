@@ -1,8 +1,6 @@
-// __tests__/Header.test.tsx
-
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Header from '@/components/Header';
+import HeaderComponent from '@/components/HeaderComponent/HeaderComponent';
 
 jest.mock('next/navigation', () => ({
     useRouter: jest.fn(),
@@ -10,20 +8,20 @@ jest.mock('next/navigation', () => ({
 
 describe('<Header />', () => {
     it('renders the logo image with alt text', () => {
-        render(<Header />);
+        render(<HeaderComponent />);
         const logo = screen.getByAltText('Logo Tinnova');
         expect(logo).toBeInTheDocument();
     });
 
     it('renders a link to the list page', () => {
-        render(<Header />);
+        render(<HeaderComponent />);
         const listLink = screen.getAllByRole('link', { name: /lista/i })[0];
         expect(listLink).toBeInTheDocument();
         expect(listLink).toHaveAttribute('href', '/list');
     });
 
     it('renders a link to the register page', () => {
-        render(<Header />);
+        render(<HeaderComponent />);
         const registerLink = screen.getByRole('link', { name: /cadastro/i });
         expect(registerLink).toBeInTheDocument();
         expect(registerLink).toHaveAttribute('href', '/register');
