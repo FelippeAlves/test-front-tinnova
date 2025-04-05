@@ -1,7 +1,8 @@
-import Header from "@/components/Header";
+import HeaderComponent from "@/components/HeaderComponent/HeaderComponent";
 import "./globals.css";
 import type { Metadata } from "next";
-import Footer from "@/components/Footer";
+import FooterComponent from "@/components/FooterComponent/FooterComponent";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Teste front-end Tinnova",
@@ -16,9 +17,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className="flex flex-col min-h-screen">
-        <Header />
+        <HeaderComponent />
         {children}
-        <Footer />
+        <Toaster richColors position="bottom-right" />
+        <FooterComponent />
       </body>
     </html>
   );

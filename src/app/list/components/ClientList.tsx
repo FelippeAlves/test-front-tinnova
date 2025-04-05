@@ -7,9 +7,17 @@ import { maskCPF } from '@/utils/maskCPF';
 import { maskPhone } from '@/utils/maskPhone';
 import { UserList } from '@/types/UserList';
 import { Pencil, Trash2 } from 'lucide-react';
+import { User } from '@/interfaces/User';
+import EditUserModal from './EditUserModal';
+import ConfirmDeleteModal from './ConfirmDeleteModal';
+import { toast } from 'sonner';
 
 export default function ClientList() {
     const [users, setUsers] = useState<UserList>([]);
+    const [openModal, setOpenModal] = useState(false);
+    const [userToEdit, setUserToEdit] = useState<User | null>(null);
+    const [userToDelete, setUserToDelete] = useState<User | null>(null);
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
     useEffect(() => {
         const localUsers = getUsersFromStorage();
@@ -24,14 +32,19 @@ export default function ClientList() {
         }
     }, []);
 
-    const handleEdit = (id: string) => {
-        console.log('Editar usuário:', id);
+    const handleEditUser = (user: User) => {
+        setUserToEdit(user);
+        setOpenModal(true);
     };
 
-    const handleDelete = (id: string) => {
-        const updated = users.filter(user => user.id !== id);
+    const handleDeletUser = () => {
+        if (!userToDelete) return;
+
+        const updated = users.filter((u) => u.id !== userToDelete.id);
         setUsers(updated);
         saveUsersToStorage(updated);
+        setOpenDeleteModal(false);
+        toast.success(`Usuário ${userToDelete.name} excluído com sucesso!`);
     };
 
     if (users.length === 0) {
@@ -47,14 +60,17 @@ export default function ClientList() {
                 >
                     <div className="absolute top-3 right-3 flex space-x-2">
                         <button
-                            onClick={() => handleEdit(user.id)}
+                            onClick={() => handleEditUser(user)}
                             className="text-gray-400 hover:text-gray-600 transition-colors"
                             aria-label="Editar"
                         >
                             <Pencil size={18} />
                         </button>
                         <button
-                            onClick={() => handleDelete(user.id)}
+                            onClick={() => {
+                                setUserToDelete(user);
+                                setOpenDeleteModal(true);
+                            }}
                             className="text-red-300 hover:text-red-700 transition-colors"
                             aria-label="Deletar"
                         >
@@ -74,6 +90,22 @@ export default function ClientList() {
                     </p>
                 </div>
             ))}
+            <EditUserModal
+                open={openModal}
+                onClose={() => setOpenModal(false)}
+                userToEdit={userToEdit}
+                onUserUpdated={() => {
+                    const updatedUsers = getUsersFromStorage();
+                    setUsers(updatedUsers!);
+                }}
+            />
+            <ConfirmDeleteModal
+                open={openDeleteModal}
+                onClose={() => setOpenDeleteModal(false)}
+                onConfirm={handleDeletUser}
+                userName={userToDelete?.name || ''}
+            />
+
         </div>
     );
 }
